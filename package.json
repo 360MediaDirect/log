@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "author": "Tom Shawver <tom@360mediadirect.com>",
   "license": "UNLICENSED",
-  "repository": "https://github.com/360MediaDirect/panache",
+  "repository": "https://github.com/360MediaDirect/log",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
