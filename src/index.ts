@@ -80,7 +80,7 @@ const errorFormatter = format((infoMap, opts = {}) => {
   splat.forEach((elem: any) => {
     if (elem instanceof Error) {
       infoMap[freeKey(infoMap, 'error')] = opts.pipeNewline
-        ? elem.stack.replace(/\n\s+/g, ' | ')
+        ? elem.stack?.replace(/\n\s+/g, ' | ')
         : elem.stack
       if ((elem as any).response) {
         const res = (elem as any).response
