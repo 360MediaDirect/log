@@ -87,7 +87,7 @@ const errorFormatter = format((infoMap, opts = {}) => {
         infoMap[freeKey(infoMap, 'errorResponse')] = {
           data: maybeJSON(res.data),
           status: res.status,
-          headers: res.headers
+          headers: res.headers,
         }
       }
       if ((elem as any).request) {
@@ -101,7 +101,7 @@ const errorFormatter = format((infoMap, opts = {}) => {
 const formats = {
   default: format.json(),
   json: format.json(),
-  simple: format.simple()
+  simple: format.simple(),
 }
 
 const formatters = []
@@ -114,9 +114,9 @@ const log = createLogger({
   silent: isTrueEnv(LOG_SILENT),
   format: format.combine(
     ...formatters,
-    formats[formatName] ? formats[formatName] : formats.default
+    formats[formatName] ? formats[formatName] : formats.default,
   ),
-  transports: [new transports.Console()]
+  transports: [new transports.Console()],
 })
 
 export default log
