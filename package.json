@@ -6,7 +6,10 @@
   "types": "dist/index.d.ts",
   "author": "Tom Shawver <tom@360mediadirect.com>",
   "license": "UNLICENSED",
-  "repository": "https://github.com/360MediaDirect/log",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/360MediaDirect/log.git"
+  },
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
