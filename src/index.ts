@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import { format, createLogger, transports } from 'winston'
 import { SPLAT } from 'triple-beam'
 
@@ -20,7 +19,7 @@ type WinstonInfo = Record<string | symbol, any>
  * @param key The chosen key
  * @returns the first free key of the chosen prefix.
  */
-function freeKey(obj: any, key: string): string {
+export function freeKey(obj: any, key: string): string {
   if (!obj.hasOwnProperty(key)) return key
   let idx = 0
   let newKey: string
@@ -37,7 +36,7 @@ function freeKey(obj: any, key: string): string {
  * @param key Any key that may or may not exist on that object
  * @returns the value of the given object's given key
  */
-function getValue<T, K extends keyof T>(object: T, key: K): T[K] {
+export function getValue<T, K extends keyof T>(object: T, key: K): T[K] {
   return object[key]
 }
 
@@ -47,7 +46,7 @@ function getValue<T, K extends keyof T>(object: T, key: K): T[K] {
  * @param val The value to be testing for truthiness
  * @returns `true` if an affirmative value was found; `false` otherwise.
  */
-function isTrueEnv(val: string): boolean {
+export function isTrueEnv(val: string): boolean {
   if (!val) return false
   const truthy = ['1', 'true', 'yes', 'on']
   val = val.trim().toLowerCase()
@@ -60,7 +59,7 @@ function isTrueEnv(val: string): boolean {
  * @param str The string that might be JSON
  * @returns An object parsed from the JSON, or the original string
  */
-function maybeJSON(str: string): string | Record<string, any> {
+export function maybeJSON(str: string): string | Record<string, any> {
   try {
     return JSON.parse(str)
   } catch (_e) {
@@ -74,7 +73,7 @@ function maybeJSON(str: string): string | Record<string, any> {
  * If multiple `error` keys are defined, this function will save them as
  * `error0`, `error1`, etc.
  */
-const errorFormatter = format((infoMap, opts = {}) => {
+export const errorFormatter = format((infoMap, opts = {}) => {
   const splat = getValue(infoMap as WinstonInfo, SPLAT)
   if (!splat) return infoMap
   splat.forEach((elem: any) => {
